@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitor de Morais Felix | Desenvolvedor Back-End</title>
+    <meta name="description" content="Desenvolvedor Back-End especializado em Java e Spring Boot. Portfólio de projetos e certificações.">
+    <meta name="author" content="Vitor de Morais Felix">
+    <meta name="keywords" content="desenvolvedor back-end, java, spring boot, desenvolvedor, api rest">
+
+    <meta property="og:title" content="Vitor de Morais Felix | Desenvolvedor Back-End">
+    <meta property="og:description" content="Desenvolvedor Back-End especializado em Java e Spring Boot.">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --text-primary: #f5f5f5;
+            --text-secondary: #a0a0a0;
+            --accent: #007BFF;
+            --accent-hover: #0056b3;
+            --border: #333333;
+            --card-bg: #242424;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .hero-content .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-content .description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background-color: var(--accent);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 123, 255, 0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: #ffffff;
+        }
+
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-alt {
+            background-color: var(--bg-secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .about-avatar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-avatar img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+
+        .about-avatar img:hover {
+            transform: scale(1.05);
+            border-color: var(--accent);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-text strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .skills-heading {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .skill-icon-font {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .skill-icon-svg {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .skill-card:hover .skill-icon-font,
+        .skill-card:hover .skill-icon-svg {
+            transform: scale(1.1);
+            color: var(--accent);
+        }
+
+        .skill-card h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        a.card.cert-card {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .cert-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+            object-fit: contain;
+        }
+
+        .cert-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-card .cert-org {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .cert-card .cert-year {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            opacity: 0.8;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .experience-list {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .exp-card {
+            border-left: 4px solid var(--accent);
+            padding: 2rem;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .exp-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .exp-period {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .exp-company {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .exp-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            line-height: 1.8;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background-color: #333;
+            color: var(--text-primary);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .project-links .btn {
+            flex: 1;
+            justify-content: center;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .project-links .btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .contact-card a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1);
+        }
+
+        .contact-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-value {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            word-break: break-all;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                justify-content: flex-end;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .cert-grid,
+            .projects-grid,
+            .contact-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        svg {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <div class="nav-container">
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#certifications">Certificações</a></li>
+            <li><a href="#experience">Experiência</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+        <button class="mobile-menu" aria-label="Menu">☰</button>
+    </div>
+</nav>
+
+<section id="home">
+    <div class="hero-content">
+        <h1>Vitor de Morais Felix</h1>
+        <p class="subtitle">Desenvolvedor Back-End</p>
+        <p class="description">
+            Construindo soluções escaláveis e eficientes.
+            Focado em criar sistemas que realmente fazem diferença.
+        </p>
+        <a href="#projects" class="btn">
+            Ver Projetos
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </a>
+    </div>
+</section>
+
+<section id="about" class="section-alt">
+    <div class="container">
+        <h2>Sobre Mim</h2>
+
+        <div class="about-grid">
+            <div class="about-avatar">
+                <img src="https://avatars.githubusercontent.com/u/178607925?s=400&u=2ad827e17849f3c77dd7ef063bedbfaa7eae32bd&v=4" alt="Vitor de Morais Felix" id="avatar-img">
+            </div>
+
+            <div class="about-text">
+                <p>
+                    Sou estudante de Análise e Desenvolvimento de Sistemas e entusiasta de tecnologia,
+                    em transição para a área de Desenvolvimento de Software.
+                </p>
+                <p>
+                    Tenho sólida base em <strong>Java e Spring Boot</strong>,
+                    com foco em construir soluções back-end escaláveis, robustas e eficientes.
+                </p>
+                <p>
+                    Acredito na melhoria contínua, no aprendizado constante e na criação de sistemas que
+                    realmente façam diferença.
+                </p>
+            </div>
+        </div>
+
+        <h3 class="skills-heading">Minhas Habilidades</h3>
+        <div class="skills-grid">
+
+            <div class="skill-card">
+                <i class="skill-icon-font devicon-spring-plain"></i>
+                <h3>Java & Spring Boot</h3>
+            </div>
+
+            <div class="skill-card">
+                <svg class="skill-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+                </svg>
+                <h3>AWS Cloud</h3>
+            </div>
+
+            <div class="skill-card">
+                <svg class="skill-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                    <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                    <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                </svg>
+                <h3>API Restful</h3>
+            </div>
+
+            <div class="skill-card">
+                <i class="skill-icon-font devicon-docker-plain"></i>
+                <h3>Docker</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="certifications">
+    <div class="container">
+        <h2>Certificações</h2>
+        <div class="cert-grid">
+
+            <a href="https://www.credly.com/badges/04a6f4da-56f2-4295-ad0b-02742684b4aa/public_url" target="_blank" rel="noopener noreferrer" class="card cert-card">
+                <img src="https://images.credly.com/size/110x110/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png" alt="Logo AWS" class="cert-icon">
+                <h3>AWS Certified Cloud Practitioner</h3>
+                <p class="cert-org">Amazon Web Services</p>
+                <p class="cert-year">2025</p>
+            </a>
+
+            <a href="https://www.credly.com/badges/f681a934-3975-4623-a199-d7fcd5e4f283/public_url" target="_blank" rel="noopener noreferrer" class="card cert-card">
+                <img src="https://images.credly.com/size/110x110/images/44e2c252-5d19-4574-9646-005f7225bf53/image.png" alt="Logo Escola da Nuvem" class="cert-icon">
+                <h3>AWS re/Start</h3>
+                <p class="cert-org">Escola da Nuvem</p>
+                <p class="cert-year">2025</p>
+            </a>
+
+            <a href="https://www.credly.com/badges/73fe5e89-66f9-4e1c-8d9e-20220d836492/public_url" target="_blank" rel="noopener noreferrer" class="card cert-card">
+                <img src="https://images.credly.com/size/110x110/images/4dda8ae4-99ee-476c-bca3-6f0adbab42fe/image.png" alt="Logo Google Cloud" class="cert-icon">
+                <h3>Google Cloud Computing Foundations Certificate</h3>
+                <p class="cert-org">Google Cloud</p>
+                <p class="cert-year">2025</p>
+            </a>
+        </div>
+        <div class="text-center">
+            <a href="https://www.credly.com/users/vitor-de-morais-felix" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                Ver todas no Credly
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                    <polyline points="15 3 21 3 21 9"/>
+                    <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="experience" class="section-alt">
+    <div class="container">
+        <h2>Experiência</h2>
+        <div class="experience-list">
+            <div class="card exp-card">
+                <div class="exp-header">
+                    <h3>Estagiário de Suporte e Monitoramento de Rede</h3>
+                    <span class="exp-period">2025 – Atual</span>
+                </div>
+                <p class="exp-company">IP Experience</p>
+                <p class="exp-description">
+                    Realizo o monitoramento de redes de grande escala utilizando ferramentas como Zabbix e UISP, garantindo a disponibilidade dos serviços e prevenindo falhas. Presto suporte técnico a clientes corporativos, solucionando incidentes de conectividade e infraestrutura, além de oferecer apoio remoto às equipes de campo e gerenciar chamados técnicos, assegurando eficiência e rastreabilidade nos atendimentos.
+                </p>
+            </div>
+            <div class="card exp-card">
+                <div class="exp-header">
+                    <h3>Service Desk</h3>
+                    <span class="exp-period">2023 – 2024</span>
+                </div>
+                <p class="exp-company">Grupo GPS</p>
+                <p class="exp-description">
+                    Prestei suporte técnico a usuários, garantindo alta taxa de resolução de chamados dentro do SLA e contribuindo para a continuidade das operações. Fui responsável pela configuração e manutenção de sistemas e pelo controle de ativos de TI, reduzindo falhas e aprimorando a organização do inventário. Além disso, documentei soluções e processos, promovendo a padronização do atendimento e facilitando o treinamento de novos colaboradores.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects">
+    <div class="container">
+        <h2>Projetos</h2>
+        <div class="projects-grid">
+            <div class="card project-card">
+                <h3>Projeto AIRDATA - Sistema de Monitoramento da Qualidade do Ar</h3>
+                <p class="project-description">
+                    Projeto acadêmico que monitora o Índice de Qualidade do Ar (IQAr) em São Paulo. O sistema processa dados da API externa, exibe o nível de risco atual e recomendações de saúde. Inclui gráficos de barras com histórico de 7 dias e estatísticas (min, max, média).
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Spring Boot</span>
+                    <span class="tech-tag">Angular</span>
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">AWS</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Vitu07/projeto-airdata" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        Código
+                    </a>
+                    <a href="https://web-projeto-airdata.onrender.com" target="_blank" rel="noopener noreferrer" class="btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                        Demo
+                    </a>
+                </div>
+            </div>
+            <div class="card project-card">
+                <h3>Spotify Clone</h3>
+                <p class="project-description">
+                    Clone funcional do Spotify. O sistema exibe perfis de artistas e realiza o streaming de faixas de música hospedadas em um bucket Amazon S3.
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">React.js</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">S3</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Vitu07/deploy-projeto-spotifyclone" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        Código
+                    </a>
+                    <a href="https://deploy-projeto-spotifyclone.onrender.com" target="_blank" rel="noopener noreferrer" class="btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                        Demo
+                    </a>
+                </div>
+            </div>
+            <div class="card project-card">
+                <h3>Guia de Receitas Inteligente (Android)</h3>
+                <p class="project-description">
+                    Aplicativo Android para gerenciar receitas. Possui um sistema de favoritos persistente (Room), integração com vídeos (YouTube) e leitura em voz alta (Text-to-Speech) para acessibilidade.
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">XML</span>
+                    <span class="tech-tag">Room (SQLite)</span>
+                    <span class="tech-tag">Glide</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Vitu07" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        Código
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="section-alt">
+    <div class="container">
+        <h2>Vamos Conversar?</h2>
+        <p style="text-align: center; font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Estou sempre aberto a novas oportunidades e colaborações.
+        </p>
+
+        <div class="contact-grid">
+            <div class="card contact-card">
+                <a href="mailto:vitormorais20092004@gmail.com">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    <h3>Email</h3>
+                    <p class="contact-value">vitormorais20092004@gmail.com</p>
+                </a>
+            </div>
+            <div class="card contact-card">
+                <a href="https://linkedin.com/in/vitor-de-morais" target="_blank" rel="noopener noreferrer">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                    <h3>LinkedIn</h3>
+                    <p class="contact-value">linkedin.com/in/vitor-de-morais</p>
+                </a>
+            </div>
+            <div class="card contact-card">
+                <a href="https://github.com/Vitu07" target="_blank" rel="noopener noreferrer">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <h3>GitHub</h3>
+                    <p class="contact-value">github.com/Vitu07</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenu.addEventListener('click', () => {
+        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        navLinks.style.position = 'absolute';
+        navLinks.style.top = '100%';
+        navLinks.style.left = '0';
+        navLinks.style.right = '0';
+        navLinks.style.backgroundColor = 'var(--card-bg)';
+        navLinks.style.padding = '1rem';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+    });
+
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.style.color = 'var(--text-secondary)';
+            if (link.getAttribute('href') === `#${current}`) {
+                link.style.color = 'var(--accent)';
+            }
+        });
+    });
+
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'fadeIn 0.8s ease-in forwards';
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.card').forEach(card => {
+        observer.observe(card);
+    });
+</script>
+</body>
+</html>
